@@ -1,0 +1,10 @@
+version: '3.4'
+services:
+  web1:
+    image: "guy/webapp:v1.0.0"
+    ports:
+    - "8081:80"
+  web2:
+    image: "guy/webapp:v1.0.0"
+    ports:
+    - "8082:80"
