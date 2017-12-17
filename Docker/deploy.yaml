@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
   - name: webappdemo
-    image: $ACR_DNS/WebApp:$BUILD_ID
+    image: $ACR_DNS/webapp:$BUILD_ID
     ports:
     - containerPort: 80
       protocol: TCP
