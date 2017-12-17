@@ -40,4 +40,4 @@ spec:
   selector:
     name: webappdemo
     app: demo
-  type: NodePort
+  type: LoadBalancer
