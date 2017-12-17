@@ -1,17 +1,26 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1beta1
+kind: Deployment
 metadata:
-  name: webappdemo
+  name: webappdemo-deployment
   labels:
     name: webappdemo
     app: demo
 spec:
-  containers:
-  - name: webappdemo
-    image: $ACR_DNS/webapp:$BUILD_ID
-    ports:
-    - containerPort: 80
-      protocol: TCP
+  strategy:
+    type: Recreate
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: webappdemo
+        app: demo
+    spec:
+      containers:
+      - name: webappdemo
+        image: $ACR_DNS/webapp:$BUILD_ID
+        ports:
+        - containerPort: 80
+          protocol: TCP
 ---
 apiVersion: v1
 kind: Service
@@ -31,4 +40,4 @@ spec:
   selector:
     name: webappdemo
     app: demo
-  type: LoadBalancer
+  type: NodePort
